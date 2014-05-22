@@ -1,0 +1,91 @@
+<!-- <strong>Module:</strong>        User &raquo;
+<strong>Controller:</strong>    Index &raquo;
+<strong>Action:</strong>        index -->
+
+<?php  if ($this->error):?>
+	<p> Error occured !</p>
+<?php endif;?>
+
+<?php 
+$form = $this->form;
+$form->prepare();
+$form->setAttribute('action', $this->url('login' , array('controller' => 'login', 'action' => 'process')));
+?>
+
+<div class="row">
+<div class="col-md-8">
+	<div class="jumbotron" >
+		<h3><span class="zf-green">Zend Framework 2</span></h3>
+		<p>Authentication, Authorization, Cryptocrapy, <span class="zf-green">Form</span>, Filter, Validation, Input Filter, <span class="zf-green">CSRF, Captcha</span>,
+		 Math, Escaper, Cookies</p>
+		 <h3><span class="zf-green">Patterns</span></h3>
+		 <p>Namespaces, Exceptions, Configurations, Plugin, Dispatching</p>
+	</div>
+</div>
+
+<div class="col-md-4">
+<?php echo $this->form()->openTag($form)?>
+<!--  <form method="get" action="login/process"> -->
+<div class="panel panel-default">
+	<div class="panel-heading" style="padding-top: 15px; padding-bottom: 15px;">
+		<label>Login | <a href="#sinup">Create an account</a></label>
+	</div>
+	<div class="panel-body">	
+	  <div class="form-group">
+		 <?php 
+		 echo $this->formLabel($form->get('email'));
+		 echo $this->formelement($form->get('email'));
+		 echo $this->formelementerrors($form->get('email'));
+		 ?>	
+	  </div>
+	  <div class="form-group">
+	   <?php 
+		 echo $this->formLabel($form->get('password'));
+		 echo $this->formelement($form->get('password'));
+		 echo $this->formelementerrors($form->get('password'));
+		 ?>	
+	  </div> 
+	  <div class="form-group">
+		    <?php 
+		      echo $this->formelement($form->get('csrf'));
+		      echo $this->formcheckbox($form->get('checkbox')); 
+		    ?>      
+	      	<label>Stay signed in</label>	   
+	  </div> 
+	   <div class="form-group">
+	    <?php 
+	   		  echo $this->formLabel($form->get('captcha'));
+		      echo $this->formcaptchafiglet($form->get('captcha'));
+		?>
+	   </div>	 
+		   <?php 
+		      echo $this->formsubmit($form->get('submit')); 
+		   ?>	 
+	</div>
+</div>
+ <?php echo $this->form()->openTag($form)?>
+<!--  </form> -->
+
+<!-- <form role="form">
+	<div class="form-group">
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon">Username</span>
+			<input type="text" class="form-control" placeholder="user@example.com" >
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon">Password&nbsp;</span>
+			<input type="password" class="form-control" placeholder="***************" >
+		</div>
+	</div>
+	<div class="checkbox">
+		<label>
+			<input type="checkbox"> Remember me!
+		</label>
+	</div>
+</form>
+ -->
+</div>
+
+</div>
